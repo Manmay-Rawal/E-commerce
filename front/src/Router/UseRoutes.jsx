@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes,Route } from 'react-router-dom'
-import NavBar from '../component/NavBar.jsx'
+import NavBar from '../Coustomer/component/Navigation/Navigation.jsx'
 
 const UseRoutes = () => {
   return (
