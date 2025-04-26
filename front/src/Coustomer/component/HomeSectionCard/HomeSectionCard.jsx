@@ -6,7 +6,7 @@ function HomeSectionCard({ product }) {
       <div className="h-[13rem] w-[10rem]">
         <img
           className="object-cover object-top w-full h-full"
-          src={product.imageUrl}
+          src={product.imageUrl || product.image}
           alt=""
         />
       </div>
