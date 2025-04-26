@@ -30,7 +30,7 @@ const HomeSectionCarousel = ({data,sectionName}) => {
 
   return (
     <div >
-      <h2 className="font-extrabold ">{sectionName}</h2>
+      <h2 className="font-extrabold text-2xl py-5 text-gray-800 text-center ">{sectionName}</h2>
       <div className="relative p-5">
         <AliceCarousel
           ref={carouselRef}
