@@ -8,7 +8,13 @@ function MainCarousel() {
     <img className="cursor-pointer mx-auto" role="presentation" src={item.image} />
   ));
 
-  return <AliceCarousel items={items} />;
+  return<AliceCarousel 
+  items={items}
+disableButtonsControls
+autoPlay
+autoPlayInterval={1000}
+infinite
+   />;
 }
 
 export default MainCarousel;
