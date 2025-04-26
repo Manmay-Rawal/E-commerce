@@ -1,5 +1,4 @@
-
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 import AliceCarousel from "react-alice-carousel";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
@@ -8,6 +7,7 @@ import { mens_kurta } from "../../../Data/Men/men_kurta";
 
 const HomeSectionCarousel = () => {
   const carouselRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const responsive = {
     0: { items: 1 },
@@ -15,8 +15,15 @@ const HomeSectionCarousel = () => {
     1024: { items: 5.5 },
   };
 
-  const SlidePrev = () => carouselRef.current.slidePrev();
-  const SlideNext = () => carouselRef.current.slideNext();
+  const SlidePrev = () => {
+    carouselRef.current.slidePrev();
+    setActiveIndex(prev => Math.max(prev - 1, 0));
+  };
+
+  const SlideNext = () => {
+    carouselRef.current.slideNext();
+    setActiveIndex(prev => Math.min(prev + 1, items.length - 1));
+  };
 
   const items = mens_kurta
     .slice(0, 10)
@@ -32,41 +39,46 @@ const HomeSectionCarousel = () => {
           disableButtonsControls
           disableDotsControls
           controlsStrategy="alternate"
+          onSlideChanged={(e) => setActiveIndex(e.item)} 
         />
 
-        <Button
-          variant="contained"
-          onClick={SlidePrev}
-          sx={{
-            position: "absolute",
-            top: "8rem",
-            left: "0",
-            transform: "translateX(-50%) rotate(90deg)",
-            bgcolor: "white",
-          }}
-          aria-label="left"
-        >
-          <KeyboardArrowLeftIcon
-            sx={{ transform: "rotate(270deg)", color: "black" }}
-          />
-        </Button>
+        {activeIndex !== 0 && (
+          <Button
+            variant="contained"
+            onClick={SlidePrev}
+            sx={{
+              position: "absolute",
+              top: "8rem",
+              left: "0",
+              transform: "translateX(-50%) rotate(90deg)",
+              bgcolor: "white",
+            }}
+            aria-label="left"
+          >
+            <KeyboardArrowLeftIcon
+              sx={{ transform: "rotate(270deg)", color: "black" }}
+            />
+          </Button>
+        )}
 
-        <Button
-          variant="contained"
-          onClick={SlideNext}
-          sx={{
-            position: "absolute",
-            top: "8rem",
-            right: "0",
-            transform: "translateX(50%) rotate(90deg)",
-            bgcolor: "white",
-          }}
-          aria-label="right"
-        >
-          <KeyboardArrowLeftIcon
-            sx={{ transform: "rotate(90deg)", color: "black" }}
-          />
-        </Button>
+        {activeIndex !== items.length - 5 && (
+          <Button
+            variant="contained"
+            onClick={SlideNext}
+            sx={{
+              position: "absolute",
+              top: "8rem",
+              right: "0",
+              transform: "translateX(50%) rotate(90deg)",
+              bgcolor: "white",
+            }}
+            aria-label="right"
+          >
+            <KeyboardArrowLeftIcon
+              sx={{ transform: "rotate(90deg)", color: "black" }}
+            />
+          </Button>
+        )}
       </div>
     </div>
   );
