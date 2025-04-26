@@ -21,7 +21,6 @@ const ProductsCard = () => {
           <p className="text-2xl font-bold">$199</p>
           <p className="line-through opacity-50">$1999</p>
           <p className="text-green-600 font-semibold">80% off</p>
-
         </div>
       </div>
     </div>
