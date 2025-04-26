@@ -1,14 +1,13 @@
-import React from "react";
+
+import React, { useRef } from "react";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 import AliceCarousel from "react-alice-carousel";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { Button } from "@mui/material";
-import { useState } from "react";
-
+import { mens_kurta } from "../../../Data/Men/men_kurta";
 
 const HomeSectionCarousel = () => {
-
-  const [ActiveIndex, setActiveIndex] = useState(0);
+  const carouselRef = useRef(null);
 
   const responsive = {
     0: { items: 1 },
@@ -16,28 +15,45 @@ const HomeSectionCarousel = () => {
     1024: { items: 5.5 },
   };
 
-  const ActivePerv = () => {setActiveIndex(ActiveIndex - 1)};
-  const ActiveNext = () => {setActiveIndex(ActiveIndex + 1)};
-  const syncActiveIndex = (items) => {setActiveIndex(items)};
-;
-  const items = [1, 1, 1, 1, 1, 1,, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((item) => <HomeSectionCard />);
+  const SlidePrev = () => carouselRef.current.slidePrev();
+  const SlideNext = () => carouselRef.current.slideNext();
+
+  const items = mens_kurta
+    .slice(0, 10)
+    .map((item, index) => <HomeSectionCard key={index} product={item} />);
 
   return (
-    <div className="relative lg:px-8 px-4">
-      <div className="relative p-5 ">
+    <div className="">
+      <div className="relative p-5">
         <AliceCarousel
+          ref={carouselRef}
           items={items}
-          disableButtonsControls
-          infinite
           responsive={responsive}
+          disableButtonsControls
           disableDotsControls
-          onSlideChanged={syncActiveIndex}
-          ActiveIndex={ActiveIndex}
+          controlsStrategy="alternate"
         />
-        {ActiveIndex !== items.length - 5 && <Button
+
+        <Button
           variant="contained"
-          className="z-50"
-          onClick={ActivePerv}
+          onClick={SlidePrev}
+          sx={{
+            position: "absolute",
+            top: "8rem",
+            left: "0",
+            transform: "translateX(-50%) rotate(90deg)",
+            bgcolor: "white",
+          }}
+          aria-label="left"
+        >
+          <KeyboardArrowLeftIcon
+            sx={{ transform: "rotate(270deg)", color: "black" }}
+          />
+        </Button>
+
+        <Button
+          variant="contained"
+          onClick={SlideNext}
           sx={{
             position: "absolute",
             top: "8rem",
@@ -45,29 +61,12 @@ const HomeSectionCarousel = () => {
             transform: "translateX(50%) rotate(90deg)",
             bgcolor: "white",
           }}
-          area-label="right"
+          aria-label="right"
         >
           <KeyboardArrowLeftIcon
             sx={{ transform: "rotate(90deg)", color: "black" }}
           />
-        </Button>}
-        {ActiveIndex !== ActiveIndex+5 && <Button
-          variant="contained"
-          className="z-50"
-          onClick={ActiveNext}
-          sx={{
-            position: "absolute",
-            top: "8rem",
-            left: "0",
-            transform: "translateX(-50%) rotate(-90deg)",
-            bgcolor: "white",
-          }}
-          area-label="right"
-        >
-          <KeyboardArrowLeftIcon
-            sx={{ transform: "rotate(90deg)", color: "black" }}
-          />
-        </Button>}
+        </Button>
       </div>
     </div>
   );
