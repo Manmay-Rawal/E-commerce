@@ -14,7 +14,7 @@ const HomeSectionCarousel = () => {
   const items = [1, 1, 1, 1, 1].map((item) => <HomeSectionCard />);
 
   return (
-    <div className="relative lg:px-8 px-4">
+    <div className="relative lg:px-8 px-4 border border-black">
       <div className="relative p-5 ">
         <AliceCarousel
           items={items}
