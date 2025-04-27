@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { sareePage1 } from "../../../Data/Saree/page1";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import { useLocation,useNavigate } from "react-router-dom";
 import {
   FormControl,
   FormControlLabel,
@@ -43,6 +45,33 @@ function classNames(...classes) {
 
 export default function Products() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleFilters = (value, sectionID) => {
+    const searchParams = new URLSearchParams(location.search);
+
+    let filterValues = searchParams.getAll("sectionID");
+
+    if (filterValues.length > 0 && filterValues[0].split(",").includes(value)) {
+      filterValues = filterValues[0]
+        .split(",")
+        .filter((item) => item !== value);
+
+      if (filterValues.length === 0) {
+        searchParams.delete(sectionID);
+      }
+    }
+    else {
+      filterValues.push(value);
+      searchParams.set(sectionID, filterValues.join(","));
+    }
+    if(filterValues.length > 0) {
+      searchParams.set(sectionID, filterValues.join(","));
+      const query= searchParams.toString();
+      navigate({search:`?${query}`});
+    }
+  };
 
   return (
     <div className="bg-white">
@@ -220,7 +249,10 @@ export default function Products() {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
               {/* Filters */}
               <div>
-                <h1 className="text-lg font-bold opacity-60">Filters</h1>
+                <div className="py-5 flex items-center justify-between">
+                  <h1 className="text-lg font-bold opacity-60">Filters</h1>
+                  <FilterListIcon />
+                </div>
                 <form className="hidden lg:block">
                   {filters.map((section) => (
                     <Disclosure
@@ -252,6 +284,7 @@ export default function Products() {
                               <div className="flex h-5 shrink-0 items-center">
                                 <div className="group grid size-4 grid-cols-1">
                                   <input
+                                  onChange={() => handleFilters(option.value, section.id)}
                                     defaultValue={option.value}
                                     defaultChecked={option.checked}
                                     id={`filter-${section.id}-${optionIdx}`}
