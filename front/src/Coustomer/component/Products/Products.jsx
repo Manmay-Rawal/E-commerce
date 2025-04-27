@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { sareePage1 } from "../../../Data/Saree/page1";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   FormControl,
   FormControlLabel,
@@ -51,26 +51,30 @@ export default function Products() {
   const handleFilters = (value, sectionID) => {
     const searchParams = new URLSearchParams(location.search);
 
-    let filterValues = searchParams.getAll("sectionID");
+    let filterValues = searchParams.getAll(sectionID)[0]?.split(",") || [];
 
-    if (filterValues.length > 0 && filterValues[0].split(",").includes(value)) {
-      filterValues = filterValues[0]
-        .split(",")
-        .filter((item) => item !== value);
+    if (filterValues.includes(value)) {
+      filterValues = filterValues.filter((item) => item !== value);
 
       if (filterValues.length === 0) {
         searchParams.delete(sectionID);
       }
-    }
-    else {
+    } else {
       filterValues.push(value);
       searchParams.set(sectionID, filterValues.join(","));
     }
-    if(filterValues.length > 0) {
+    if (filterValues.length > 0) {
       searchParams.set(sectionID, filterValues.join(","));
-      const query= searchParams.toString();
-      navigate({search:`?${query}`});
     }
+    const query = searchParams.toString();
+    navigate({ search: `?${query}` });
+  };
+
+  const handleRadioFilter = (e, sectionID) => {
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set(sectionID, e.target.value);
+    const query = searchParams.toString();
+    navigate({ search: `?${query}` });
   };
 
   return (
@@ -284,7 +288,9 @@ export default function Products() {
                               <div className="flex h-5 shrink-0 items-center">
                                 <div className="group grid size-4 grid-cols-1">
                                   <input
-                                  onChange={() => handleFilters(option.value, section.id)}
+                                    onChange={() =>
+                                      handleFilters(option.value, section.id)
+                                    }
                                     defaultValue={option.value}
                                     defaultChecked={option.checked}
                                     id={`filter-${section.id}-${optionIdx}`}
@@ -364,6 +370,9 @@ export default function Products() {
                               {section.options.map((option, optionIdx) => (
                                 <>
                                   <FormControlLabel
+                                    onChange={(e) =>
+                                      handleRadioFilter(e, section.id)
+                                    }
                                     value={option.value}
                                     control={<Radio />}
                                     label={option.label}
