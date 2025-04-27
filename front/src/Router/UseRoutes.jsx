@@ -14,7 +14,16 @@ const UseRoutes = () => {
           element={
             <>
               <NavBar />
-              {/* <HomePage /> */}
+              <HomePage />
+              <Footer />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Products"
+          element={
+            <>
+              <NavBar />
               <Products />
               <Footer />
             </>

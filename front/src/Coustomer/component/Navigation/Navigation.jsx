@@ -1,4 +1,5 @@
 'use client'
+// import {Produtes} from '../../component/Products/Products.jsx'
 
 import { Fragment, useState } from 'react'
 import {
@@ -138,6 +139,7 @@ const navigation = {
   pages: [
     { name: 'Company', href: '#' },
     { name: 'Stores', href: '#' },
+    { name: 'All Produtes', href: '/products' },
   ],
 }
 
@@ -286,7 +288,7 @@ export default function Navigation() {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="#">
+                <a href="/">
                   <span className="sr-only">Your Company</span>
                   <img
                     alt=""
