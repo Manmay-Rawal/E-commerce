@@ -285,7 +285,12 @@ export default function ProductsDetails() {
               <Grid item xs={5}>
                 <h1 className="text-lg font-semibold pb-1">Products Ratings</h1>
                 <div className="flex items-center space-x-3">
-                  <Rating name="read-only" value={4.5} precision={.5} readOnly />
+                  <Rating
+                    name="read-only"
+                    value={4.5}
+                    precision={0.5}
+                    readOnly
+                  />
                   <p className="opacity-50 text-sm">5673 Review</p>
                   <p className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
                     5673 Review
@@ -303,12 +308,12 @@ export default function ProductsDetails() {
                       <LinearProgress
                         variant="determinate"
                         value={80}
-                        color="success"
                         sx={{
                           height: 8,
                           borderRadius: 5,
-                          backgroundColor: "#E5E7EB", // Tailwind's gray-200
+                          backgroundColor: "#E5E7EB",
                           "& .MuiLinearProgress-bar": {
+                            backgroundColor: "#22c55e",
                             borderRadius: 5,
                           },
                         }}
