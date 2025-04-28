@@ -1,35 +1,43 @@
 import React from "react";
 import CartItem from "./CartItem";
+import { Button } from "@mui/material";
 
 const Cart = () => {
   return (
     <div>
       <div className="lg:grid grid-cols-3 lg:px-6 relative">
         <div className="col-span-2">
-          <CartItem />
+          {[1,1,1,1].map((item)=><CartItem />)}
         </div>
         <div className="px-5 sticky top-0 h-[100vh] mt-5 lg:mt-0">
-          <div className="shadow-lg">
+          <div className="shadow-lg p-5">
             <p className="uppercase font-bold opacity-60 pb-4">Price Details</p>
-            <hr />
+            <hr className="opacity-10" />
             <div className="space-y-3 font-semibold">
               <div className="flex justify-between text-black pt-3">
                 <span>Price</span>
-                <span>₹4573</span>
+                <span>4573₹</span>
               </div>
-              <div className="flex justify-between text-black pt-3">
+              <div className="flex justify-between pt-3">
                 <span>Discount</span>
-                <span></span>
+                <span className="text-green-600">-3419₹</span>
               </div>
-              <div className="flex justify-between text-black pt-3">
+              <div className="flex justify-between pt-3">
                 <span>Dilivery Charge</span>
-                <span>₹4573</span>
+                <span className="text-green-600">Free</span>
               </div>
-              <div className="flex justify-between text-black pt-3">
+              <div className="flex justify-between font-bold pt-3">
                 <span>Total Amount</span>
-                <span>₹4573</span>
+                <span className="text-green-600">1278₹</span>
               </div>
             </div>
+            <Button
+              variant="contained"
+              className="w-full"
+              sx={{ marginTop: "2.5rem", backgroundColor: "#4F46E5" }}
+            >
+              Add to Cart
+            </Button>
           </div>
         </div>
       </div>
