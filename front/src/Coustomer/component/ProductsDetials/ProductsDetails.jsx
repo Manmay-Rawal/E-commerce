@@ -9,6 +9,8 @@ import Grid from "@mui/material/Grid";
 import ProductReviewCard from "./ProductReviewCard";
 import { Box } from "@mui/system";
 import { LinearProgress } from "@mui/material";
+import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
+import {mens_kurta} from "../../../Data/Men/men_kurta";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -295,7 +297,7 @@ export default function ProductsDetails() {
                 </div>
 
                 <Box mt={5}>
-                  <Grid container alignItems="center" gap={2}>
+                  <Grid container alignItems="center" gap={17}>
                     <Grid item xs={2}>
                       <p className="font-semibold">Excellent</p>
                     </Grid>
@@ -311,7 +313,7 @@ export default function ProductsDetails() {
                       />
                     </Grid>
                   
-                    <Grid container alignItems="center" gap={2}>
+                    <Grid container alignItems="center" gap={16}>
                     <Grid item xs={2}>
                       <p className="font-semibold">Very Good</p>
                     </Grid>
@@ -327,7 +329,7 @@ export default function ProductsDetails() {
                       />
                     </Grid>
 
-                    <Grid container alignItems="center" gap={2}>
+                    <Grid container alignItems="center" gap={20}>
                     <Grid item xs={6}>
                       <p className="font-semibold">Good</p>
                     </Grid>
@@ -343,7 +345,7 @@ export default function ProductsDetails() {
                       />
                     </Grid>
 
-                    <Grid container alignItems="center" gap={2}>
+                    <Grid container alignItems="center" gap={18}>
                     <Grid item xs={2}>
                       <p className="font-semibold">Average</p>
                     </Grid>
@@ -359,7 +361,7 @@ export default function ProductsDetails() {
                       />
                     </Grid>
 
-                    <Grid container alignItems="center" gap={2}>
+                    <Grid container alignItems="center" gap={22}>
                     <Grid item xs={2}>
                       <p className="font-semibold">Poor</p>
                     </Grid>
@@ -377,6 +379,13 @@ export default function ProductsDetails() {
                 </Box>
               </Grid>
             </Grid>
+          </div>
+        </section>
+        {/* Similar Product */}
+        <section>
+          <h1 className="py-5 text-xl font-bold">Similar Product</h1>
+          <div className="flex flex-wrap space-x-5">
+            {mens_kurta.map((item)=><HomeSectionCard product={item} />)}
           </div>
         </section>
       </div>

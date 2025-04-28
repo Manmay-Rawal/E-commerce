@@ -5,6 +5,7 @@ import NavBar from "../Coustomer/component/Navigation/Navigation.jsx";
 import Footer from "../Coustomer/component/Footer/Footer.jsx";
 // import Products from "../Coustomer/component/Products/Products.jsx";
 import ProductsDetails from "../Coustomer/component/ProductsDetials/ProductsDetails.jsx";
+import Cart from "../Coustomer/component/Cart/Cart.jsx";
 
 const UseRoutes = () => {
   return (
@@ -17,7 +18,8 @@ const UseRoutes = () => {
               <NavBar />
               {/* <HomePage /> */}
               {/* <Products /> */}
-              <ProductsDetails />
+              {/* <ProductsDetails /> */}
+              <Cart/>
               <Footer />
             </>
           }
