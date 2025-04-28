@@ -276,7 +276,7 @@ export default function ProductsDetails() {
 
           <div className=" p-5">
             <Grid container spacing={7}>
-              <Grid item xs={7}>
+              <Grid size={{ xs: 7}} md>
                 <div className="space-y-5">
                   {[1, 1, 1].map((item) => (
                     <ProductReviewCard />
@@ -284,7 +284,7 @@ export default function ProductsDetails() {
                 </div>
               </Grid>
 
-              <Grid item xs={5}>
+              <Grid size={{ xs: 5}}>
                 <h1 className="text-xl font-semibold pb-1">Products Ratings</h1>
                 <div className="flex items-center space-x-3">
                   <Rating
@@ -296,86 +296,91 @@ export default function ProductsDetails() {
                   <p className="opacity-60 text-sm">5673 rating</p>
                 </div>
 
-                <Box mt={5}>
-                  <Grid container alignItems="center" gap={17}>
-                    <Grid item xs={2}>
+                <Box mt={3}>
+                  <Grid container alignItems="center" gap={1}>
+                    <Grid size={{ xs: 2}}>
                       <p className="font-semibold">Excellent</p>
                     </Grid>
-                    <Grid item xs={2}>
-                      <p className="font-semibold opacity-60">1998</p>
-                    </Grid>
-                    </Grid>
-                    <Grid item xs={7}>
+                    <Grid size={{ xs: 7}}>
                       <LinearProgress sx={{ bgcolor:"gray",borderRadius:4, height: 7 }} 
                         variant="determinate"
                         color="success"
-                        value={40}
+                        value={80}
                       />
                     </Grid>
-                  
-                    <Grid container alignItems="center" gap={16}>
-                    <Grid item xs={2}>
-                      <p className="font-semibold">Very Good</p>
-                    </Grid>
-                    <Grid item xs={2}>
+                    <Grid size={{ xs: 2}}>
                       <p className="font-semibold opacity-60">1998</p>
                     </Grid>
                     </Grid>
-                    <Grid item xs={7}>
+                    
+                  
+                    <Grid container alignItems="center" gap={1}>
+                    <Grid size={{ xs: 2}}>
+                      <p className="font-semibold">Very Good</p>
+                    </Grid>
+                    <Grid size={{ xs: 7}}>
                       <LinearProgress sx={{ bgcolor:"gray",borderRadius:4, height: 7 }} 
                         variant="determinate"
                         color="primary"
-                        value={40}
+                        value={60}
                       />
                     </Grid>
+                    <Grid size={{ xs: 2}}>
+                      <p className="font-semibold opacity-60">1998</p>
+                    </Grid>
+                    </Grid>
+                    
 
-                    <Grid container alignItems="center" gap={20}>
-                    <Grid item xs={6}>
+                    <Grid container alignItems="center" gap={1}>
+                    <Grid size={{ xs: 2}}>
                       <p className="font-semibold">Good</p>
                     </Grid>
-                    <Grid item xs={6}>
-                      <p className="font-semibold opacity-60">1898</p>
-                    </Grid>
-                    </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={{ xs: 7}}>
                       <LinearProgress sx={{ bgcolor:"gray",borderRadius:4, height: 7 }} 
                         variant="determinate"
                         color="secondary"
                         value={40}
                       />
                     </Grid>
+                    <Grid size={{ xs: 2}}>
+                      <p className="font-semibold opacity-60">1898</p>
+                    </Grid>
+                    </Grid>
+                    
 
-                    <Grid container alignItems="center" gap={18}>
-                    <Grid item xs={2}>
+                    <Grid container alignItems="center" gap={1}>
+                    <Grid size={{ xs: 2}}>
                       <p className="font-semibold">Average</p>
                     </Grid>
-                    <Grid item xs={2}>
-                      <p className="font-semibold opacity-60">1998</p>
-                    </Grid>
-                    </Grid>
-                    <Grid item xs={7}>
+                    <Grid size={{ xs: 7}}>
                       <LinearProgress sx={{ bgcolor:"gray",borderRadius:4, height: 7 }} 
                         variant="determinate"
                         color="inherit"
-                        value={40}
+                        value={20}
                       />
                     </Grid>
+                    <Grid size={{ xs: 2}}>
+                      <p className="font-semibold opacity-60">1998</p>
+                    </Grid>
+                    </Grid>
+                    
 
-                    <Grid container alignItems="center" gap={22}>
-                    <Grid item xs={2}>
+                    <Grid container alignItems="center" gap={1}>
+                    <Grid size={{ xs: 2}}>
                       <p className="font-semibold">Poor</p>
                     </Grid>
-                    <Grid item xs={2}>
-                      <p className="font-semibold opacity-60">198</p>
-                    </Grid>
-                    </Grid>
-                    <Grid item xs={7}>
+                    <Grid size={{ xs: 7}}>
                       <LinearProgress sx={{ bgcolor:"gray",borderRadius:4, height: 7 }} 
                         variant="determinate"
                         color="error"
-                        value={40}
+                        value={10}
                       />
                     </Grid>
+                    <Grid size={{ xs: 2}}>
+                      <p className="font-semibold opacity-60">198</p>
+                    </Grid>
+                    </Grid>
+                    
                 </Box>
               </Grid>
             </Grid>
