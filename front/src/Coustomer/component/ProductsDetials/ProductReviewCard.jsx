@@ -19,11 +19,11 @@ const ProductReviewCard = () => {
         <Grid item xs={9}>
           <div className="space-y-2">
             <div>
-            <h1 className="text-lg font-semibold">Rohit Sharma</h1>
-            <p>April-04-2023</p>
+            <h1 className="text-lg font-semibold text-lg">Rohit Sharma</h1>
+            <p className="opacity-50">April-04-2023</p>
             </div>
           </div>
-          <Rating value={4} name='half-rating'/>
+          <Rating value={4.5} name='half-rating' precision={.5} readOnly/>
           <p className="text-sm text-gray-500">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
               voluptatibus.

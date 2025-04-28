@@ -7,6 +7,8 @@ import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import ProductReviewCard from "./ProductReviewCard";
+import { Box } from "@mui/system";
+import { LinearProgress } from "@mui/material";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -66,7 +68,7 @@ export default function ProductsDetails() {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white lg:px-20">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
           <ol
@@ -266,20 +268,57 @@ export default function ProductsDetails() {
           </div>
         </section>
 
-{/* Review and rating */}
+        {/* Review and rating */}
         <section>
-                    <h1 className="font-semibold text-lg pb-4">Recent Review & Rating</h1>
+          <h1 className="font-semibold text-lg pb-4">Recent Review & Rating</h1>
 
-                    <div className=" p-5">
-                        <Grid container spacing={7}>
-                            <Grid item xs={7} >
-                                <div className="space-y-5">
-                                    <ProductReviewCard/>
-                                </div>
-                            </Grid>
-                        </Grid>
+          <div className=" p-5">
+            <Grid container spacing={7}>
+              <Grid item xs={7}>
+                <div className="space-y-5">
+                  {[1, 1, 1].map((item) => (
+                    <ProductReviewCard />
+                  ))}
+                </div>
+              </Grid>
 
-                    </div>
+              <Grid item xs={5}>
+                <h1 className="text-lg font-semibold pb-1">Products Ratings</h1>
+                <div className="flex items-center space-x-3">
+                  <Rating name="read-only" value={4.5} precision={.5} readOnly />
+                  <p className="opacity-50 text-sm">5673 Review</p>
+                  <p className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                    5673 Review
+                  </p>
+                </div>
+
+                <Box sx={{ marginTop: "1rem" }}>
+                  <Grid container alignItems="center" spacing={2}>
+                    <Grid item xs={3}>
+                      <p className="text-sm font-medium text-gray-700">
+                        Excellent
+                      </p>
+                    </Grid>
+                    <Grid item xs={9}>
+                      <LinearProgress
+                        variant="determinate"
+                        value={80}
+                        color="success"
+                        sx={{
+                          height: 8,
+                          borderRadius: 5,
+                          backgroundColor: "#E5E7EB", // Tailwind's gray-200
+                          "& .MuiLinearProgress-bar": {
+                            borderRadius: 5,
+                          },
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Grid>
+            </Grid>
+          </div>
         </section>
       </div>
     </div>
