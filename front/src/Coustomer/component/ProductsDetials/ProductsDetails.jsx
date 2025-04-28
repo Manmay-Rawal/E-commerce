@@ -283,7 +283,7 @@ export default function ProductsDetails() {
               </Grid>
 
               <Grid item xs={5}>
-                <h1 className="text-lg font-semibold pb-1">Products Ratings</h1>
+                <h1 className="text-xl font-semibold pb-1">Products Ratings</h1>
                 <div className="flex items-center space-x-3">
                   <Rating
                     name="read-only"
@@ -291,35 +291,89 @@ export default function ProductsDetails() {
                     precision={0.5}
                     readOnly
                   />
-                  <p className="opacity-50 text-sm">5673 Review</p>
-                  <p className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                    5673 Review
-                  </p>
+                  <p className="opacity-60 text-sm">5673 rating</p>
                 </div>
 
-                <Box sx={{ marginTop: "1rem" }}>
-                  <Grid container alignItems="center" spacing={2}>
-                    <Grid item xs={3}>
-                      <p className="text-sm font-medium text-gray-700">
-                        Excellent
-                      </p>
+                <Box mt={5}>
+                  <Grid container alignItems="center" gap={2}>
+                    <Grid item xs={2}>
+                      <p className="font-semibold">Excellent</p>
                     </Grid>
-                    <Grid item xs={9}>
-                      <LinearProgress
+                    <Grid item xs={2}>
+                      <p className="font-semibold opacity-60">1998</p>
+                    </Grid>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress sx={{ bgcolor:"gray",borderRadius:4, height: 7 }} 
                         variant="determinate"
-                        value={80}
-                        sx={{
-                          height: 8,
-                          borderRadius: 5,
-                          backgroundColor: "#E5E7EB",
-                          "& .MuiLinearProgress-bar": {
-                            backgroundColor: "#22c55e",
-                            borderRadius: 5,
-                          },
-                        }}
+                        color="success"
+                        value={40}
                       />
                     </Grid>
-                  </Grid>
+                  
+                    <Grid container alignItems="center" gap={2}>
+                    <Grid item xs={2}>
+                      <p className="font-semibold">Very Good</p>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <p className="font-semibold opacity-60">1998</p>
+                    </Grid>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress sx={{ bgcolor:"gray",borderRadius:4, height: 7 }} 
+                        variant="determinate"
+                        color="primary"
+                        value={40}
+                      />
+                    </Grid>
+
+                    <Grid container alignItems="center" gap={2}>
+                    <Grid item xs={6}>
+                      <p className="font-semibold">Good</p>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <p className="font-semibold opacity-60">1898</p>
+                    </Grid>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <LinearProgress sx={{ bgcolor:"gray",borderRadius:4, height: 7 }} 
+                        variant="determinate"
+                        color="secondary"
+                        value={40}
+                      />
+                    </Grid>
+
+                    <Grid container alignItems="center" gap={2}>
+                    <Grid item xs={2}>
+                      <p className="font-semibold">Average</p>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <p className="font-semibold opacity-60">1998</p>
+                    </Grid>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress sx={{ bgcolor:"gray",borderRadius:4, height: 7 }} 
+                        variant="determinate"
+                        color="inherit"
+                        value={40}
+                      />
+                    </Grid>
+
+                    <Grid container alignItems="center" gap={2}>
+                    <Grid item xs={2}>
+                      <p className="font-semibold">Poor</p>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <p className="font-semibold opacity-60">198</p>
+                    </Grid>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress sx={{ bgcolor:"gray",borderRadius:4, height: 7 }} 
+                        variant="determinate"
+                        color="error"
+                        value={40}
+                      />
+                    </Grid>
                 </Box>
               </Grid>
             </Grid>
