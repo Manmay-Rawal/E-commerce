@@ -276,7 +276,7 @@ export default function ProductsDetails() {
 
           <div className=" p-5">
             <Grid container spacing={7}>
-              <Grid size={{ xs: 7}} md>
+              <Grid size={{ xs: 7}}>
                 <div className="space-y-5">
                   {[1, 1, 1].map((item) => (
                     <ProductReviewCard />
