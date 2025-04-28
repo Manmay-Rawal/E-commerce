@@ -9,7 +9,7 @@ const Footer = () => {
         className="bg-black text-white text-center mt-8"
         sx={{ bgcolor: "black", color: "white", py: 2, px: 3, justifyContent: "space-between", textAlign: "center" }}
       >
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography className="pb-5" variant="h6">Company</Typography>
           <div>
             <Button variant="text" sx={{ color: "white", fontSize:"13px" }}>About</Button>
@@ -28,7 +28,7 @@ const Footer = () => {
           </div>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography className="pb-5" variant="h6">Solution</Typography>
           <div>
             <Button variant="text" sx={{ color: "white", fontSize:"13px" }}>Marketing</Button>
@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography className="pb-5" variant="h6">Documentation</Typography>
           <div>
             <Button variant="text" sx={{ color: "white", fontSize:"13px" }}>Gides</Button>
@@ -57,7 +57,7 @@ const Footer = () => {
           </div>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography className="pb-5" variant="h6">Legal</Typography>
           <div>
             <Button variant="text" sx={{ color: "white", fontSize:"13px" }}>Claim</Button>
@@ -71,7 +71,7 @@ const Footer = () => {
         </Grid>
 
       </Grid>
-        <Grid item xs={12} >
+        <Grid size={{xs:12}} >
             <Typography className="text-center text-white" fontSize="15px" sx={{ bgcolor: "black", color: "white", py: 2, px: 3 }}> 
                 © 2023 All rights reserved | This template is made with <span className="text-red-500">❤️</span> by <a href="" className="text-red-500">Manmay Rawal</a>
             </Typography>
