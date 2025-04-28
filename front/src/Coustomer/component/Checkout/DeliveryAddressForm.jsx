@@ -27,6 +27,8 @@ const DeliveryAddressForm = () => {
                             fullWidth
                             autoComplete="given-name"
                             />
+                        </Grid>
+                        <Grid size={{ xs: 12, sm: 6}}>
                             <TextField
                             required
                             id="firstName"
