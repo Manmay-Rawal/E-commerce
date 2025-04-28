@@ -1,9 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "../Coustomer/component/Navigation/Navigation.jsx";
-import HomePage from "../Coustomer/pages/HomePages/HomePage.jsx";
+// import HomePage from "../Coustomer/pages/HomePages/HomePage.jsx";
 import Footer from "../Coustomer/component/Footer/Footer.jsx";
-import Products from "../Coustomer/component/Products/Products.jsx";
+// import Products from "../Coustomer/component/Products/Products.jsx";
+import ProductsDetails from "../Coustomer/component/ProductsDetials/ProductsDetails.jsx";
 
 const UseRoutes = () => {
   return (
@@ -14,12 +15,14 @@ const UseRoutes = () => {
           element={
             <>
               <NavBar />
-              <HomePage />
+              {/* <HomePage /> */}
+              {/* <Products /> */}
+              <ProductsDetails />
               <Footer />
             </>
           }
         ></Route>
-        <Route
+        {/* <Route
           path="/Products"
           element={
             <>
@@ -28,8 +31,8 @@ const UseRoutes = () => {
               <Footer />
             </>
           }
-        ></Route>
-      </Routes>
+        ></Route>*/}
+      </Routes> 
     </div>
   );
 };
