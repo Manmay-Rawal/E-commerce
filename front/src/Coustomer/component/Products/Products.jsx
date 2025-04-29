@@ -33,6 +33,7 @@ import {
 } from "@heroicons/react/20/solid";
 import ProductsCard from "./ProductsCard";
 import { filters, singleFilter } from "./FilterData";
+import { mens_kurta } from "../../../Data/Men/men_kurta";
 
 const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
@@ -390,9 +391,9 @@ export default function Products() {
               {/* Product grid */}
               <div className="lg:col-span-4 w-full">
                 <div className="flex flex-wrap justify-center py-5 bg-white">
-                  {sareePage1.map((item) => (
+                  {mens_kurta.map((item) => 
                     <ProductsCard product={item} />
-                  ))}
+                  )}
                 </div>
               </div>
             </div>

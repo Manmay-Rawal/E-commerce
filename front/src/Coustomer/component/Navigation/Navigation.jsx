@@ -22,6 +22,10 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
+
+import { Avatar,Button,Menu,MenuItem } from "@mui/material";
+import { deepPurple } from "@mui/material/colors";
 
 const navigation = {
   categories: [
@@ -51,38 +55,38 @@ const navigation = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Tops", href: "#" },
-            { name: "Dresses", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Denim", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
+            { name: "Tops", id:"tops", href: `{women/clothing/tops}` },
+            { name: "Dresses",id:"dresses", href: "#" },
+            { name: "Pants",id:"pants", href: "#" },
+            { name: "Denim",id:"denim", href: "#" },
+            { name: "Sweaters",id:"sweaters", href: "#" },
+            { name: "T-Shirts",id:"t-shirts", href: "#" },
+            { name: "Jackets",id:"jackets", href: "#" },
+            { name: "Activewear",id:"activewer", href: "#" },
+            { name: "Browse All",id:"browse_all", href: "#" },
           ],
         },
         {
           id: "accessories",
           name: "Accessories",
           items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
+            { name: "Watches", id:"watches", href: "#" },
+            { name: "Wallets",id:"wallets",  href: "#" },
+            { name: "Bags",id:"bags",  href: "#" },
+            { name: "Sunglasses",id:"sunglasses",  href: "#" },
+            { name: "Hats",id:"hats",  href: "#" },
+            { name: "Belts",id:"belts",  href: "#" },
           ],
         },
         {
           id: "brands",
           name: "Brands",
           items: [
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Significant Other", href: "#" },
+            { name: "Full Nelson",id:"full_nelson",  href: "#" },
+            { name: "My Way",id:"my_way",  href: "#" },
+            { name: "Re-Arranged",id:"re-arranged",  href: "#" },
+            { name: "Counterfeit",id:"counterfeit",  href: "#" },
+            { name: "Significant Other",id:"significant_other",  href: "#" },
           ],
         },
       ],
@@ -113,35 +117,35 @@ const navigation = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Tops", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
+            { name: "Tops",id:"tops",  href: "#" },
+            { name: "Pants",id:"pants",  href: "#" },
+            { name: "Sweaters",id:"sweaters",  href: "#" },
+            { name: "T-Shirts",id:"t-shirts",  href: "#" },
+            { name: "Jackets",id:"jackets",  href: "#" },
+            { name: "Activewear",id:"activewear",  href: "#" },
+            { name: "Browse All",id:"browse_all",  href: "#" },
           ],
         },
         {
           id: "accessories",
           name: "Accessories",
           items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
+            { name: "Watches",id:"watches",  href: "#" },
+            { name: "Wallets",id:"wallets",  href: "#" },
+            { name: "Bags",id:"bags",  href: "#" },
+            { name: "Sunglasses",id:"sunglasses",  href: "#" },
+            { name: "Hats",id:"hats",  href: "#" },
+            { name: "Belts",id:"belts",  href: "#" },
           ],
         },
         {
           id: "brands",
           name: "Brands",
           items: [
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
+            { name: "Re-Arranged",id:"re-arranged",  href: "#" },
+            { name: "Counterfeit",id:"counterfeit",  href: "#" },
+            { name: "Full Nelson",id:"full_nelson",  href: "#" },
+            { name: "My Way",id:"my_way",  href: "#" },
           ],
         },
       ],
@@ -150,17 +154,45 @@ const navigation = {
   pages: [
     { name: "Company", href: "#" },
     { name: "Stores", href: "#" },
-    { name: "All Produtes", href: "/products" },
   ],
 };
 
+function classNames(...classes){
+  return classes.filter(Boolean).join(" ");
+}
+
 export default function Navigation() {
   const [open, setOpen] = useState(false);
+
+  const [OpenAuthModal, setOpenAuthModal]=useState(false);
+  const [anchorEl,setAnchorEl]=useState(null);
+  const openUserMenu = Boolean(anchorEl);
   const [ProfileOpen, setProfileOpen] = useState(false);
+  const navigate=useNavigate();
+
+const handleUserClick = (event) => {
+  setAnchorEl(event.currentTarget);
+};
+const handleCloseUserMenu = (event) =>{
+  setAnchorEl(null);
+};
 
   const handleLogout = () => {
     console.log("Logout clicked");
-  }
+  };
+
+  const handleOpen = () =>{
+    setOpenAuthModal(true);
+  };
+
+  const handleClose = () =>{
+    setOpenAuthModal(false)
+  };
+
+  const handleCategoryClick = (category,section,item, close)=>{
+    navigate(`/${category.id}/${section.id}/${item.id}`);
+    close();
+  };
 
   return (
     <div className="bg-white z-50">
@@ -246,13 +278,19 @@ export default function Navigation() {
                           className="mt-6 flex flex-col space-y-6"
                         >
                           {section.items.map((item) => (
-                            <li key={item.name} className="flow-root">
-                              <a
-                                href={item.href}
-                                className="-m-2 block p-2 text-gray-500"
+                            <li key={item.name} className="flex">
+                              <p onClick={()=>
+                                handleCategoryClick(
+                                  category,
+                                  section,
+                                  item,
+                                  close,
+                                )
+                              }
+                              className="cursor-pointer hover:text-gray-800"
                               >
                                 {item.name}
-                              </a>
+                              </p>
                             </li>
                           ))}
                         </ul>
@@ -319,7 +357,6 @@ export default function Navigation() {
                 onClick={() => setOpen(true)}
                 className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
               >
-                <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon aria-hidden="true" className="size-6" />
               </button>
@@ -341,8 +378,16 @@ export default function Navigation() {
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
+                      {({open, close})=>(
+                        <>
                       <div className="relative flex">
-                        <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-open:border-indigo-600 data-open:text-indigo-600">
+                        <PopoverButton className={classNames(
+                          open
+                          ? "border-indigo-600 text-indigo-600"
+                          : "border-transparent text-gray-700 hover:text-gray-800",
+                          "relative z-10 -mb-px flex items-center border-b-2  pt-px text-sm font-medium  transition-colors duration-200 ease-out "
+                        )}
+                        >
                           {category.name}
                         </PopoverButton>
                       </div>
@@ -350,8 +395,7 @@ export default function Navigation() {
                       <PopoverPanel
                         transition
                         className="absolute inset-x-0 top-full text-sm text-gray-500 transition data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
-                      >
-                        {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
+                      > 
                         <div
                           aria-hidden="true"
                           className="absolute inset-0 top-1/2 bg-white shadow-sm"
@@ -403,12 +447,19 @@ export default function Navigation() {
                                     >
                                       {section.items.map((item) => (
                                         <li key={item.name} className="flex">
-                                          <a
-                                            href={item.href}
-                                            className="hover:text-gray-800"
+                                          <p
+                                            onClick={()=> 
+                                              handleCategoryClick(
+                                                category,
+                                                section,
+                                                item,
+                                                close,
+                                              )
+                                            }
+                                            className="cursor-pointer hover:text-gray-700"
                                           >
                                             {item.name}
-                                          </a>
+                                          </p>
                                         </li>
                                       ))}
                                     </ul>
@@ -419,6 +470,8 @@ export default function Navigation() {
                           </div>
                         </div>
                       </PopoverPanel>
+                      </>
+                      )} 
                     </Popover>
                   ))}
 
@@ -449,7 +502,7 @@ export default function Navigation() {
                         <div className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" href="#">
                           Profile
                         </div>
-                        <div className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" href="#">
+                        <div className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" href="#" onClick={()=>navigate("/account/order")}>
                           My Orders
                         </div>
                         <div
