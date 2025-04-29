@@ -32,7 +32,7 @@ export default function Checkout() {
 
 
   return (
-    <div className="lg:px-20 px-10">
+    <div className="lg:px-20 px-10 mt-10">
     <Box sx={{ width: '100%' }}>
       <Stepper activeStep={step}>
         {steps.map((label, index) => {
@@ -64,7 +64,7 @@ export default function Checkout() {
               Back
             </Button>
           </Box>
-          <div>
+          <div className='mt-5'>
             {step ==2?<DeliveryAddressForm/>:<OrderSummary/>}
           </div>
         </React.Fragment>
