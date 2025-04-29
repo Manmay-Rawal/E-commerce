@@ -7,6 +7,8 @@ import Footer from "../Coustomer/component/Footer/Footer.jsx";
 // import ProductsDetails from "../Coustomer/component/ProductsDetials/ProductsDetails.jsx";
 // import Cart from "../Coustomer/component/Cart/Cart.jsx";
 import Checkout from "../Coustomer/component/Checkout/Checkout.jsx";
+import Order from "../Coustomer/component/Order/Order.jsx";
+import OrderDetails from "../Coustomer/component/Order/OrderDetails.jsx";
 
 const UseRoutes = () => {
   return (
@@ -21,7 +23,9 @@ const UseRoutes = () => {
               {/* <Products /> */}
               {/* <ProductsDetails /> */}
               {/* <Cart/> */}
-              <Checkout/>
+              {/* <Checkout/> */}
+              {/* <Order/> */}
+              <OrderDetails/>
               <Footer />
             </>
           }
