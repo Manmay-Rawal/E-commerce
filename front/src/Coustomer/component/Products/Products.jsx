@@ -141,6 +141,9 @@ export default function Products() {
                             <div className="flex h-5 shrink-0 items-center">
                               <div className="group grid size-4 grid-cols-1">
                                 <input
+                                onChange={() =>
+                                  handleFilters(option.value, section.id)
+                                }
                                   defaultValue={option.value}
                                   id={`filter-mobile-${section.id}-${optionIdx}`}
                                   name={`${section.id}[]`}
