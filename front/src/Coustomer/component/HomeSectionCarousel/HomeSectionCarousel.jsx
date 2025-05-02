@@ -26,7 +26,7 @@ const HomeSectionCarousel = ({data,sectionName}) => {
 
   const items = data
     .slice(0, 10)
-    .map((item, index) => <HomeSectionCard key={index} product={item} />);
+    .map((item, index) => <HomeSectionCard key={index} product={item}  />);
 
   return (
     <div >
