@@ -16,7 +16,7 @@ const Cart = () => {
 
   return (
     <div>
-      <div className="lg:grid grid-cols-3 lg:px-6 relative">
+      <div className="lg:grid grid-cols-3 lg:px-6 relative -z-10">
         <div className="col-span-2">
           {[1,1,1,1].map((item)=><CartItem />)}
         </div>
