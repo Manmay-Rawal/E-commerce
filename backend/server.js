@@ -1,11 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+dotenv.config();
 import connectDb from './src/config/db.js';
 
 
 
-dotenv.config();
 
 const app = express();
 
