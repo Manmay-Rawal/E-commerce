@@ -1,7 +1,7 @@
-import mongoose, { model } from "mongoose";
+import mongoose from "mongoose";
 
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
     firstName:{
         required:true,
         type:String,
@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema({
         default:"CUSTOMER"
     },
     mobile:{
-        type:Number,
+        type:String,
     },
     address:[{
         type:mongoose.Schema.Types.ObjectId,
