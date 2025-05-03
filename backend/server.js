@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import connectDb from './src/config/db.js';
 
 
 
@@ -23,6 +24,7 @@ app.get('/',(req,res)=>{
 const PORT=process.env.PORT || '4000';
 const HOST = process.env.HOST || 'localhost'
 
-app.listen(PORT,HOST, ()=>{
+app.listen(PORT,HOST, async()=>{
+  await connectDb();
   console.log(`server has been start http://${HOST}:${PORT}`);
 })
