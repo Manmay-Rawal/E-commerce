@@ -1,12 +1,18 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
+// import express from 'express';
+// import cors from 'cors';
+// import dotenv from 'dotenv';
+// dotenv.config();
+// import connectDb from './src/config/db.js';
+// import authRouters from "./src/routes/auth.route.js"
+
+const express = require("express")
+const cors = require("cors");
+const dotenv = require("dotenv")
+const connectDb = require("./src/config/db.js")
+const authRouters = require("./src/routes/auth.route.js")
+
+
 dotenv.config();
-import connectDb from './src/config/db.js';
-
-
-
-
 const app = express();
 
 
@@ -19,6 +25,7 @@ app.get('/',(req,res)=>{
   res.send('HEllo Server is started')
 })
 
+app.use("/auth",authRouters);
 
 
 const PORT=process.env.PORT || '4000';

@@ -1,6 +1,12 @@
-import userService from "../services/user.service.js"
-import jwtProvider from "../config/jwtProvider.js"
-import bcrypt from "bcrypt"
+// import userService from "../services/user.service.js"
+// import jwtProvider from "../config/jwtProvider.js"
+// import bcrypt from "bcrypt"
+// import cartService from "../services/cart.service.js"
+
+const userService = require("../services/user.service.js")
+const jwtProvider = require("../config/jwtProvider.js")
+const bcrypt = require("bcrypt")
+const cartService = require("../services/cart.service.js")
 
 
 const resister = async(req,res)=>{
@@ -8,7 +14,7 @@ const resister = async(req,res)=>{
         const user = await userService.createUser(req.body);
         const jwt = jwtProvider.generateToken(user._id);
 
-        // await cartService.createCart(user);
+        await cartService.createCart(user);
 
         return res.status(200).send({jwt,message:"registered successful"})
     } catch (error) {
