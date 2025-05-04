@@ -1,4 +1,6 @@
 import {User} from "../model/user.models.js"
+import jwtProvider from "../config/jwtProvider.js"
+import bcrypt from "bcrypt"
 
 
 const createUser = async(userData)=>{
@@ -24,7 +26,7 @@ const createUser = async(userData)=>{
 const findUserById = async(userId)=>{
     try {
 
-        const user = await User.findById(userId)
+        const user = await User.findById(userId).populate("address")
 
         if(!user){
             throw new Error("user not fund by Id ",userId)
@@ -36,7 +38,7 @@ const findUserById = async(userId)=>{
     }
 }
 
-const findUserByEmail = async(email)=>{
+const getUserByEmail = async(email)=>{
     try {
 
         const user = await User.findOne(email)
@@ -51,4 +53,31 @@ const findUserByEmail = async(email)=>{
     }
 }
 
-module.exports = {createUser,findUserById,findUserByEmail};
+const getUserProfileByToken = async(token)=>{
+    try {
+        
+        const userId = jwtProvider.getUserIdFromToken(token);
+        const user = await findUserById(userId)
+
+        if(!user){
+            throw new Error("user not fund by Id ",userId)
+        }
+        return user
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+const getAllUser = async() =>{
+    try {
+        
+        const users = await User.find()
+        return users
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+module.exports = {createUser,findUserById,getUserByEmail,getUserProfileByToken,getAllUser};
