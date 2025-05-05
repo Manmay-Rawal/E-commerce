@@ -1,3 +1,4 @@
+const CartItem = require("../model/cartItems.models");
 const userService = require("../services/user.service.js")
 
 
@@ -33,5 +34,25 @@ async function updateCartItem(userId,cartItemId,cartItemData){
     }
 }
 
+async function removeCartItem(userId,cartItemId){
+    const cartItem=await findCartItemById(cartItemId);
+    const user=await userService.findUserById(userId);
 
-module.exports = {updateCartItem}
+    if(user._id.toString()===cartItem.userId.toString()){
+        await CartItem.findByIdAndDelete(cartItemId);
+    }
+    throw new Error("you cant remove another user cart items")
+}
+
+async function findCartItemById(cartItemId){
+    const cartItem=await findCartItemById(cartItemId);
+
+    if(cartItem){
+        return cartItem
+    }
+    else{
+        throw new Error("cartItem not found with id : ",cartItemId)
+    }
+}
+
+module.exports = {updateCartItem,removeCartItem}
