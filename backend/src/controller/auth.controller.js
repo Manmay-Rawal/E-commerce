@@ -1,8 +1,3 @@
-// import userService from "../services/user.service.js"
-// import jwtProvider from "../config/jwtProvider.js"
-// import bcrypt from "bcrypt"
-// import cartService from "../services/cart.service.js"
-
 const userService = require("../services/user.service.js")
 const jwtProvider = require("../config/jwtProvider.js")
 const bcrypt = require("bcrypt")
@@ -26,7 +21,7 @@ const login = async(req,res)=>{
    const {password,email} = req.body;
 
     try {
-        const user = await userService.getUserByEmail(email);
+        const user = await userService.getUserByEmail({email});
 
         if(!user){
             return res.status(404).send({message:"not fond user by email"});

@@ -1,4 +1,3 @@
-// import Cart from "../model/cart.models.js";
 const Cart = require("../model/cart.models.js")
 
 async function createCart(user) {

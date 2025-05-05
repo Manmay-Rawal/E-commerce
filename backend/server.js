@@ -1,15 +1,9 @@
-// import express from 'express';
-// import cors from 'cors';
-// import dotenv from 'dotenv';
-// dotenv.config();
-// import connectDb from './src/config/db.js';
-// import authRouters from "./src/routes/auth.route.js"
-
 const express = require("express")
 const cors = require("cors");
 const dotenv = require("dotenv")
 const connectDb = require("./src/config/db.js")
 const authRouters = require("./src/routes/auth.route.js")
+const userRouters = require("./src/routes/user.route.js")
 
 
 dotenv.config();
@@ -26,10 +20,11 @@ app.get('/',(req,res)=>{
 })
 
 app.use("/auth",authRouters);
+app.use("/api/users",userRouters);
 
 
-const PORT=process.env.PORT || '4000';
-const HOST = process.env.HOST || 'localhost'
+const PORT=process.env.PORT || '3355';
+const HOST = process.env.HOST || 'localhost';
 
 app.listen(PORT,HOST, async()=>{
   await connectDb();
